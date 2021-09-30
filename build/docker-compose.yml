@@ -1,0 +1,53 @@
+version: '3.9'
+
+services:
+
+  web:
+    build:
+      context: ../
+      dockerfile: ./build/Dockerfile
+    restart: always
+    environment:
+      CONFIG_PATH: ./configs
+      CONFIG_NAME: config.docker
+    ports:
+      - 5000:5000
+    networks:
+      - postgres
+      - redis
+    depends_on:
+      - db
+      - redis
+
+  db:
+    image: postgres:alpine
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: app
+    networks:
+      - postgres
+    volumes:
+      - db-data:/var/lib/postgresql/data
+      - ../db/dump.sql:/docker-entrypoint-initdb.d/script.sql
+
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - 8080:8080
+    networks:
+      - postgres
+
+  redis:
+    image: redis:alpine
+    restart: always
+    networks:
+      - redis
+
+networks:
+  postgres:
+  redis:
+
+volumes:
+  db-data:

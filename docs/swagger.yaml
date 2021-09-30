@@ -1,0 +1,599 @@
+basePath: /api
+definitions:
+  models.Article:
+    properties:
+      author_id:
+        example: 00000000-0000-0000-0000-000000000000
+        type: string
+      created_at:
+        example: "0000-01-01T00:00:00.000000Z"
+        type: string
+      desc:
+        example: Description
+        type: string
+      id:
+        example: 00000000-0000-0000-0000-000000000000
+        type: string
+      title:
+        example: Title
+        type: string
+      updated_at:
+        example: "0000-01-01T00:00:00.000000Z"
+        type: string
+    required:
+    - author_id
+    - desc
+    - title
+    type: object
+  models.ArticlesList:
+    properties:
+      articles:
+        items:
+          $ref: '#/definitions/models.Article'
+        type: array
+      total_count:
+        type: integer
+    type: object
+  models.AuthUser:
+    properties:
+      access_token:
+        type: string
+      expires_in:
+        example: 300
+        type: integer
+      refresh_token:
+        type: string
+      token_type:
+        example: Bearer
+        type: string
+      user:
+        $ref: '#/definitions/models.User'
+    required:
+    - access_token
+    - expires_in
+    - refresh_token
+    - token_type
+    type: object
+  models.User:
+    properties:
+      created_at:
+        example: "0000-01-01T00:00:00.000000Z"
+        type: string
+      email:
+        example: test@test.test
+        type: string
+      id:
+        example: 00000000-0000-0000-0000-000000000000
+        type: string
+      updated_at:
+        example: "0000-01-01T00:00:00.000000Z"
+        type: string
+    required:
+    - email
+    type: object
+  models.UsersList:
+    properties:
+      total_count:
+        type: integer
+      users:
+        items:
+          $ref: '#/definitions/models.User'
+        type: array
+    type: object
+  swagger.ArticleRequest:
+    properties:
+      desc:
+        example: Description
+        type: string
+      title:
+        example: Title
+        type: string
+    required:
+    - desc
+    - title
+    type: object
+  swagger.Error:
+    properties:
+      message:
+        type: string
+    required:
+    - message
+    type: object
+  swagger.UpdateUser:
+    properties:
+      email:
+        example: test@test.test
+        type: string
+      password:
+        example: password
+        type: string
+    required:
+    - email
+    type: object
+  swagger.UserRequest:
+    properties:
+      email:
+        example: test@test.test
+        type: string
+      password:
+        example: password
+        type: string
+    required:
+    - email
+    - password
+    type: object
+info:
+  contact:
+    url: https://github.com/slavken
+  description: REST API
+  title: The Clean Architecture
+  version: "1.0"
+paths:
+  /articles:
+    get:
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.ArticlesList'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/swagger.Error'
+      summary: Get all articles
+      tags:
+      - Articles
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: Body
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/swagger.ArticleRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.Article'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/swagger.Error'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/swagger.Error'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/swagger.Error'
+      security:
+      - ApiKeyAuth: []
+      summary: Add article
+      tags:
+      - Articles
+  /articles/{id}:
+    delete:
+      consumes:
+      - application/json
+      parameters:
+      - description: Article ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "204":
+          description: ""
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/swagger.Error'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/swagger.Error'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/swagger.Error'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/swagger.Error'
+      security:
+      - ApiKeyAuth: []
+      summary: Delete article
+      tags:
+      - Articles
+    get:
+      consumes:
+      - application/json
+      parameters:
+      - description: Article ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.Article'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/swagger.Error'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/swagger.Error'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/swagger.Error'
+      summary: Get article by ID
+      tags:
+      - Articles
+    put:
+      consumes:
+      - application/json
+      parameters:
+      - description: Article ID
+        in: path
+        name: id
+        required: true
+        type: string
+      - description: Body
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/swagger.ArticleRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.Article'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/swagger.Error'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/swagger.Error'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/swagger.Error'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/swagger.Error'
+      security:
+      - ApiKeyAuth: []
+      summary: Update article
+      tags:
+      - Articles
+  /auth/login:
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: Body
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/swagger.UserRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.AuthUser'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/swagger.Error'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/swagger.Error'
+      summary: Login user
+      tags:
+      - Auth
+  /auth/logout:
+    post:
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      responses:
+        "204":
+          description: ""
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/swagger.Error'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/swagger.Error'
+      security:
+      - ApiKeyAuth: []
+      summary: Log out
+      tags:
+      - Auth
+  /auth/logout/all:
+    post:
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      responses:
+        "204":
+          description: ""
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/swagger.Error'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/swagger.Error'
+      security:
+      - ApiKeyAuth: []
+      summary: Log out of all devices
+      tags:
+      - Auth
+  /auth/me:
+    post:
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.User'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/swagger.Error'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/swagger.Error'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/swagger.Error'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/swagger.Error'
+      security:
+      - ApiKeyAuth: []
+      summary: Get auth user
+      tags:
+      - Auth
+  /auth/refresh:
+    post:
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.AuthUser'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/swagger.Error'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/swagger.Error'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/swagger.Error'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/swagger.Error'
+      summary: Using the refresh token
+      tags:
+      - Auth
+  /auth/register:
+    post:
+      consumes:
+      - application/json
+      parameters:
+      - description: Body
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/swagger.UserRequest'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/models.AuthUser'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/swagger.Error'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/swagger.Error'
+      summary: New user
+      tags:
+      - Auth
+  /users:
+    get:
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.UsersList'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/swagger.Error'
+      summary: Get all users
+      tags:
+      - Users
+  /users/{id}:
+    delete:
+      consumes:
+      - application/json
+      parameters:
+      - description: User ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "204":
+          description: ""
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/swagger.Error'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/swagger.Error'
+        "403":
+          description: Forbidden
+          schema:
+            $ref: '#/definitions/swagger.Error'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/swagger.Error'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/swagger.Error'
+      security:
+      - ApiKeyAuth: []
+      summary: Delete user
+      tags:
+      - Users
+    get:
+      consumes:
+      - application/json
+      parameters:
+      - description: User ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.User'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/swagger.Error'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/swagger.Error'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/swagger.Error'
+      summary: Get user by ID
+      tags:
+      - Users
+    put:
+      consumes:
+      - application/json
+      parameters:
+      - description: User ID
+        in: path
+        name: id
+        required: true
+        type: string
+      - description: Body
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/swagger.UpdateUser'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.User'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/swagger.Error'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/swagger.Error'
+        "403":
+          description: Forbidden
+          schema:
+            $ref: '#/definitions/swagger.Error'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/swagger.Error'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/swagger.Error'
+      security:
+      - ApiKeyAuth: []
+      summary: Update user
+      tags:
+      - Users
+securityDefinitions:
+  ApiKeyAuth:
+    in: header
+    name: Authorization
+    type: apiKey
+swagger: "2.0"
