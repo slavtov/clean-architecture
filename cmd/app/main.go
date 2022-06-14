@@ -4,11 +4,11 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/slavken/go-clean-architecture/internal/config"
-	"github.com/slavken/go-clean-architecture/internal/server"
-	"github.com/slavken/go-clean-architecture/pkg/logger"
-	"github.com/slavken/go-clean-architecture/pkg/store/postgres"
-	"github.com/slavken/go-clean-architecture/pkg/store/redis"
+	"github.com/slavken/clean-architecture/internal/config"
+	"github.com/slavken/clean-architecture/internal/server"
+	"github.com/slavken/clean-architecture/pkg/logger"
+	"github.com/slavken/clean-architecture/pkg/store/postgres"
+	"github.com/slavken/clean-architecture/pkg/store/redis"
 )
 
 // @title The Clean Architecture

@@ -4,8 +4,8 @@ import (
 	"net/http"
 
 	"github.com/labstack/echo/v4"
-	"github.com/slavken/go-clean-architecture/internal/config"
-	"github.com/slavken/go-clean-architecture/pkg/logger"
+	"github.com/slavken/clean-architecture/internal/config"
+	"github.com/slavken/clean-architecture/pkg/logger"
 )
 
 func ClearCookies(
