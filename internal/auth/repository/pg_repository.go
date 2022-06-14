@@ -8,8 +8,8 @@ import (
 	"github.com/jmoiron/sqlx"
 	"github.com/labstack/echo/v4"
 	"github.com/lib/pq"
-	"github.com/slavken/go-clean-architecture/internal/domain/models"
-	"github.com/slavken/go-clean-architecture/internal/domain/repositories"
+	"github.com/slavken/clean-architecture/internal/domain/models"
+	"github.com/slavken/clean-architecture/internal/domain/repositories"
 )
 
 type pgRepository struct {

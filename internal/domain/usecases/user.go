@@ -2,8 +2,8 @@ package usecases
 
 import (
 	"github.com/google/uuid"
-	"github.com/slavken/go-clean-architecture/internal/domain/models"
-	"github.com/slavken/go-clean-architecture/pkg/utils"
+	"github.com/slavken/clean-architecture/internal/domain/models"
+	"github.com/slavken/clean-architecture/pkg/utils"
 )
 
 type (
