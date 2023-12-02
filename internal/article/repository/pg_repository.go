@@ -6,8 +6,8 @@ import (
 	"github.com/google/uuid"
 	"github.com/jmoiron/sqlx"
 	"github.com/labstack/echo/v4"
-	"github.com/slavken/clean-architecture/internal/domain/models"
-	"github.com/slavken/clean-architecture/internal/domain/repositories"
+	"github.com/slavtov/clean-architecture/internal/domain/models"
+	"github.com/slavtov/clean-architecture/internal/domain/repositories"
 )
 
 type pgRepository struct {

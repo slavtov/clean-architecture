@@ -6,10 +6,10 @@ import (
 
 	"github.com/google/uuid"
 	"github.com/labstack/echo/v4"
-	"github.com/slavken/clean-architecture/internal/domain/models"
-	"github.com/slavken/clean-architecture/internal/domain/repositories"
-	"github.com/slavken/clean-architecture/pkg/store/redis"
-	"github.com/slavken/clean-architecture/pkg/utils"
+	"github.com/slavtov/clean-architecture/internal/domain/models"
+	"github.com/slavtov/clean-architecture/internal/domain/repositories"
+	"github.com/slavtov/clean-architecture/pkg/store/redis"
+	"github.com/slavtov/clean-architecture/pkg/utils"
 )
 
 type redisRepository struct {

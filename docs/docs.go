@@ -18,7 +18,7 @@ var doc = `{
         "description": "{{escape .Description}}",
         "title": "{{.Title}}",
         "contact": {
-            "url": "https://github.com/slavken"
+            "url": "https://github.com/slavtov"
         },
         "version": "{{.Version}}"
     },

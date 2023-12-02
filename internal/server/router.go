@@ -2,12 +2,12 @@ package server
 
 import (
 	"github.com/labstack/echo/v4/middleware"
-	articleDelivery "github.com/slavken/clean-architecture/internal/article/delivery/http"
-	articleRepository "github.com/slavken/clean-architecture/internal/article/repository"
-	articleUseCase "github.com/slavken/clean-architecture/internal/article/usecase"
-	authDelivery "github.com/slavken/clean-architecture/internal/auth/delivery/http"
-	authRepository "github.com/slavken/clean-architecture/internal/auth/repository"
-	authUseCase "github.com/slavken/clean-architecture/internal/auth/usecase"
+	articleDelivery "github.com/slavtov/clean-architecture/internal/article/delivery/http"
+	articleRepository "github.com/slavtov/clean-architecture/internal/article/repository"
+	articleUseCase "github.com/slavtov/clean-architecture/internal/article/usecase"
+	authDelivery "github.com/slavtov/clean-architecture/internal/auth/delivery/http"
+	authRepository "github.com/slavtov/clean-architecture/internal/auth/repository"
+	authUseCase "github.com/slavtov/clean-architecture/internal/auth/usecase"
 	echoSwagger "github.com/swaggo/echo-swagger"
 )
 

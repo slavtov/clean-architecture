@@ -5,8 +5,8 @@ import (
 	"time"
 
 	"github.com/go-redis/redis/v8"
-	"github.com/slavken/clean-architecture/pkg/logger"
-	"github.com/slavken/clean-architecture/pkg/store"
+	"github.com/slavtov/clean-architecture/pkg/logger"
+	"github.com/slavtov/clean-architecture/pkg/store"
 )
 
 type Store interface {

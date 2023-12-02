@@ -4,17 +4,17 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/slavken/clean-architecture/internal/config"
-	"github.com/slavken/clean-architecture/internal/server"
-	"github.com/slavken/clean-architecture/pkg/logger"
-	"github.com/slavken/clean-architecture/pkg/store/postgres"
-	"github.com/slavken/clean-architecture/pkg/store/redis"
+	"github.com/slavtov/clean-architecture/internal/config"
+	"github.com/slavtov/clean-architecture/internal/server"
+	"github.com/slavtov/clean-architecture/pkg/logger"
+	"github.com/slavtov/clean-architecture/pkg/store/postgres"
+	"github.com/slavtov/clean-architecture/pkg/store/redis"
 )
 
 // @title The Clean Architecture
 // @version 1.0
 // @description REST API
-// @contact.url https://github.com/slavken
+// @contact.url https://github.com/slavtov
 
 // @securityDefinitions.apikey ApiKeyAuth
 // @in header

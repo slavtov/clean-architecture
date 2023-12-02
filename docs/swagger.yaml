@@ -124,7 +124,7 @@ definitions:
     type: object
 info:
   contact:
-    url: https://github.com/slavken
+    url: https://github.com/slavtov
   description: REST API
   title: The Clean Architecture
   version: "1.0"

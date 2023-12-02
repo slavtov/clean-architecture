@@ -8,7 +8,7 @@ import (
 	"github.com/golang-jwt/jwt"
 	"github.com/google/uuid"
 	"github.com/labstack/echo/v4"
-	"github.com/slavken/clean-architecture/pkg/logger"
+	"github.com/slavtov/clean-architecture/pkg/logger"
 )
 
 type JWTConfig struct {

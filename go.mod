@@ -1,4 +1,4 @@
-module github.com/slavken/clean-architecture
+module github.com/slavtov/clean-architecture
 
 go 1.17
 

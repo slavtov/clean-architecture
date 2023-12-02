@@ -3,10 +3,10 @@ package server
 import (
 	"github.com/jmoiron/sqlx"
 	"github.com/labstack/echo/v4"
-	_ "github.com/slavken/clean-architecture/docs"
-	"github.com/slavken/clean-architecture/internal/config"
-	"github.com/slavken/clean-architecture/pkg/logger"
-	"github.com/slavken/clean-architecture/pkg/store/redis"
+	_ "github.com/slavtov/clean-architecture/docs"
+	"github.com/slavtov/clean-architecture/internal/config"
+	"github.com/slavtov/clean-architecture/pkg/logger"
+	"github.com/slavtov/clean-architecture/pkg/store/redis"
 )
 
 type Server struct {

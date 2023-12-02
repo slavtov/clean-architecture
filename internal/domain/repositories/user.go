@@ -4,7 +4,7 @@ import (
 	"time"
 
 	"github.com/google/uuid"
-	"github.com/slavken/clean-architecture/internal/domain/models"
+	"github.com/slavtov/clean-architecture/internal/domain/models"
 )
 
 type (

@@ -5,10 +5,10 @@ import (
 
 	"github.com/google/uuid"
 	"github.com/labstack/echo/v4"
-	"github.com/slavken/clean-architecture/internal/config"
-	"github.com/slavken/clean-architecture/internal/domain/usecases"
-	"github.com/slavken/clean-architecture/pkg/logger"
-	"github.com/slavken/clean-architecture/pkg/utils"
+	"github.com/slavtov/clean-architecture/internal/config"
+	"github.com/slavtov/clean-architecture/internal/domain/usecases"
+	"github.com/slavtov/clean-architecture/pkg/logger"
+	"github.com/slavtov/clean-architecture/pkg/utils"
 )
 
 func Auth(
